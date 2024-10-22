@@ -6,47 +6,47 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Campo de email -->
+    <!-- Campo para el nombre -->
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/nombreEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Correo Electrónico"
-        android:inputType="textEmailAddress"
+        android:hint="Nombre"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Campo de contraseña -->
+    <!-- Campo para el correo -->
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/correoEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Correo Electrónico"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/nombreEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Campo para la contraseña -->
+    <EditText
+        android:id="@+id/contrasenaEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintTop_toBottomOf="@id/correoEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Botón de Login -->
+    <!-- Botón de Registro -->
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/registrarButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <!-- Botón para Registrar nueva cuenta -->
-    <Button
-        android:id="@+id/registrarLinkButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Registrar nueva cuenta"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
+        android:text="Registrar"
+        app:layout_constraintTop_toBottomOf="@id/contrasenaEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
