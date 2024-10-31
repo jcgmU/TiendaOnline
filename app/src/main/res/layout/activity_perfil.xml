@@ -6,50 +6,39 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Campo de Nombre -->
-    <EditText
-        android:id="@+id/nombreEditText"
+    <!-- Nombre del Usuario -->
+    <TextView
+        android:id="@+id/nombreTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nombre Completo"
-        android:inputType="textPersonName"
+        android:text="Nombre:"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Campo de Correo -->
-    <EditText
-        android:id="@+id/correoEditText"
+    <!-- Correo del Usuario -->
+    <TextView
+        android:id="@+id/correoTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Correo Electrónico"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/nombreEditText"
+        android:text="Correo:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/nombreTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Campo de Contraseña -->
-    <EditText
-        android:id="@+id/contrasenaEditText"
+    <!-- Rol del Usuario -->
+    <TextView
+        android:id="@+id/rolTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/correoEditText"
+        android:text="Rol:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/correoTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
-
-    <!-- Botón de Registrar -->
-    <Button
-        android:id="@+id/registrarButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Registrar"
-        app:layout_constraintTop_toBottomOf="@id/contrasenaEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

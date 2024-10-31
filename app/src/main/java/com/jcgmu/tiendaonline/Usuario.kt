@@ -1,3 +1,4 @@
+// Usuario.kt
 package com.jcgmu.tiendaonline
 
 import androidx.room.Entity
@@ -9,5 +10,7 @@ data class Usuario(
     val nombre: String,
     val correo: String,
     val contrasena: String,
-    var rol: String
+    var rol: String,
+    val latitud: Double?,    // Nuevo campo
+    val longitud: Double?    // Nuevo campo
 )

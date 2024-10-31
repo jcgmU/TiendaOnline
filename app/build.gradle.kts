@@ -12,7 +12,7 @@ android {
         applicationId = "com.jcgmu.tiendaonline"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
+        versionCode = 2 // Incrementado para la nueva versión de la base de datos
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -73,13 +73,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
-
-
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     // Gson
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation(libs.androidx.activity)
 
     // Room Database
     val roomVersion = "2.6.1"
