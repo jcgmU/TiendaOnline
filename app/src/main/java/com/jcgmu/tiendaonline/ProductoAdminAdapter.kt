@@ -10,14 +10,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.net.Uri
 
-class ProductoAdapter(
+class ProductoAdminAdapter(
     private val context: Context,
-    private var productos: List<Producto>,
-    private val agregarProductoCallback: (Producto) -> Unit
-) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+    private val productos: List<Producto>,
+    private val accionCallback: (Producto, String) -> Unit
+) : RecyclerView.Adapter<ProductoAdminAdapter.ProductoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_producto, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_producto_admin, parent, false)
         return ProductoViewHolder(view)
     }
 
@@ -30,17 +30,13 @@ class ProductoAdapter(
         return productos.size
     }
 
-    fun actualizarLista(nuevaLista: List<Producto>) {
-        productos = nuevaLista
-        notifyDataSetChanged()
-    }
-
     inner class ProductoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nombreTextView: TextView = itemView.findViewById(R.id.nombreProducto)
-        private val descripcionTextView: TextView = itemView.findViewById(R.id.descripcionProducto)
-        private val precioTextView: TextView = itemView.findViewById(R.id.precioProducto)
-        private val imagenImageView: ImageView = itemView.findViewById(R.id.imagenProducto)
-        private val agregarButton: Button = itemView.findViewById(R.id.agregarCarritoButton)
+        private val nombreTextView: TextView = itemView.findViewById(R.id.nombreProductoAdmin)
+        private val descripcionTextView: TextView = itemView.findViewById(R.id.descripcionProductoAdmin)
+        private val precioTextView: TextView = itemView.findViewById(R.id.precioProductoAdmin)
+        private val imagenImageView: ImageView = itemView.findViewById(R.id.imagenProductoAdmin)
+        private val editarButton: Button = itemView.findViewById(R.id.editarProductoButton)
+        private val eliminarButton: Button = itemView.findViewById(R.id.eliminarProductoButton)
 
         fun bind(producto: Producto) {
             nombreTextView.text = producto.nombre
@@ -48,8 +44,12 @@ class ProductoAdapter(
             precioTextView.text = "$${String.format("%.2f", producto.precio)}"
             imagenImageView.setImageURI(Uri.parse(producto.imagenUri))
 
-            agregarButton.setOnClickListener {
-                agregarProductoCallback(producto)
+            editarButton.setOnClickListener {
+                accionCallback(producto, "editar")
+            }
+
+            eliminarButton.setOnClickListener {
+                accionCallback(producto, "eliminar")
             }
         }
     }

@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import android.net.Uri
+
 
 class CarritoAdapter(
     private val context: Context,
@@ -37,7 +39,7 @@ class CarritoAdapter(
         fun bind(producto: Producto) {
             nombreTextView.text = producto.nombre
             precioTextView.text = "$${String.format("%.2f", producto.precio)}"
-            imagenImageView.setImageResource(producto.imagenResId)
+            imagenImageView.setImageURI(Uri.parse(producto.imagenUri))
 
             eliminarButton.setOnClickListener {
                 eliminarProductoCallback(producto)

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Botones -->
+    <Button
+        android:id="@+id/agregarProductosButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Nuevos Productos" />
+
+    <Button
+        android:id="@+id/administrarUsuariosButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Administrar Usuarios"
+        android:layout_below="@id/agregarProductosButton" />
+
+    <Button
+        android:id="@+id/tiendaOnlineButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tienda Online"
+        android:layout_below="@id/administrarUsuariosButton" />
+
+    <Button
+        android:id="@+id/cerrarSesionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:layout_below="@id/tiendaOnlineButton" />
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/imagenProductoAdmin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Imagen del producto" />
+
+    <TextView
+        android:id="@+id/nombreProductoAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imagenProductoAdmin"
+        android:text="Nombre del Producto"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/descripcionProductoAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción del Producto"
+        android:layout_below="@id/nombreProductoAdmin"
+        android:layout_toEndOf="@id/imagenProductoAdmin" />
+
+    <TextView
+        android:id="@+id/precioProductoAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio del Producto"
+        android:layout_below="@id/descripcionProductoAdmin"
+        android:layout_toEndOf="@id/imagenProductoAdmin" />
+
+    <Button
+        android:id="@+id/editarProductoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:layout_below="@id/precioProductoAdmin"
+        android:layout_toEndOf="@id/imagenProductoAdmin" />
+
+    <Button
+        android:id="@+id/eliminarProductoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        android:layout_below="@id/editarProductoButton"
+        android:layout_toEndOf="@id/imagenProductoAdmin" />
+
+</RelativeLayout>

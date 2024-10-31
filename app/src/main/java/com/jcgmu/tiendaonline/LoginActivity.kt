@@ -1,56 +1,79 @@
 package com.jcgmu.tiendaonline
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var loginButton: Button
-    private lateinit var registrarLinkButton: Button
+    private lateinit var correoEditText: EditText
+    private lateinit var contrasenaEditText: EditText
+    private lateinit var iniciarSesionButton: Button
+    private lateinit var registrarseButton: Button
+
+    private lateinit var db: AppDatabase
+
+    private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_TiendaOnline)
         setContentView(R.layout.activity_login)
 
-        emailEditText = findViewById(R.id.email)
-        passwordEditText = findViewById(R.id.password)
-        loginButton = findViewById(R.id.login_button)
-        registrarLinkButton = findViewById(R.id.registrarLinkButton)
+        correoEditText = findViewById(R.id.correoEditText)
+        contrasenaEditText = findViewById(R.id.contrasenaEditText)
+        iniciarSesionButton = findViewById(R.id.iniciarSesionButton)
+        registrarseButton = findViewById(R.id.registrarseButton)
 
-        loginButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        db = AppDatabase.obtenerBaseDatos(this)
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                // Validar las credenciales desde SharedPreferences
-                val sharedPref = getSharedPreferences("Usuarios", Context.MODE_PRIVATE)
-                val storedPassword = sharedPref.getString("contrasena_$email", null)
+        iniciarSesionButton.setOnClickListener {
+            val correo = correoEditText.text.toString()
+            val contrasena = contrasenaEditText.text.toString()
 
-                if (storedPassword != null && storedPassword == password) {
-                    // Login exitoso, navegar a la lista de productos
-                    val intent = Intent(this, ListadoProductosActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    // Mostrar mensaje de error
-                    Toast.makeText(this, "Email o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+            if (correo.isNotEmpty() && contrasena.isNotEmpty()) {
+                uiScope.launch {
+                    iniciarSesion(correo, contrasena)
                 }
             } else {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Redirigir a la pantalla de registro
-        registrarLinkButton.setOnClickListener {
+        registrarseButton.setOnClickListener {
             val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun iniciarSesion(correo: String, contrasena: String) {
+        uiScope.launch {
+            val usuario = withContext(Dispatchers.IO) {
+                db.usuarioDao().login(correo, contrasena)
+            }
+            if (usuario != null) {
+                if (usuario.rol == "admin") {
+                    val intent = Intent(this@LoginActivity, AdminPanelActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    val intent = Intent(this@LoginActivity, ListadoProductosActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            } else {
+                Toast.makeText(this@LoginActivity, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        uiScope.cancel()
     }
 }

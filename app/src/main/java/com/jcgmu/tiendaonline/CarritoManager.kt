@@ -12,7 +12,8 @@ object CarritoManager {
     private var productosEnCarrito: MutableList<Producto> = mutableListOf()
 
     fun agregarProducto(context: Context, producto: Producto) {
-        if (!productosEnCarrito.contains(producto)) {
+        if (!productosEnCarrito.contains(producto
+        )) {
             productosEnCarrito.add(producto)
             guardarCarrito(context)
         }

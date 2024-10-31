@@ -8,7 +8,7 @@
 
     <!-- Campo de email -->
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/correoEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
@@ -19,34 +19,34 @@
 
     <!-- Campo de contraseña -->
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/contrasenaEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintTop_toBottomOf="@id/correoEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Botón de Login -->
+    <!-- Botón de Iniciar Sesión -->
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/iniciarSesionButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Iniciar Sesión"
-        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintTop_toBottomOf="@id/contrasenaEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
     <!-- Botón para Registrar nueva cuenta -->
     <Button
-        android:id="@+id/registrarLinkButton"
+        android:id="@+id/registrarseButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Registrar nueva cuenta"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
+        app:layout_constraintTop_toBottomOf="@id/iniciarSesionButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
