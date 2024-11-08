@@ -7,14 +7,19 @@ interface UsuarioDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertarUsuario(usuario: Usuario)
 
+
     @Query("SELECT * FROM usuarios")
-    suspend fun obtenerUsuarios(): List<Usuario>
+    suspend fun obtenerTodosLosUsuarios(): List<Usuario>
+
 
     @Query("SELECT * FROM usuarios WHERE id = :usuarioId LIMIT 1")
     suspend fun obtenerUsuarioPorId(usuarioId: Int): Usuario?
 
+    @Query("SELECT * FROM usuarios WHERE correo = :correo AND contrasena = :contrasena LIMIT 1")
+    suspend fun obtenerUsuarioPorCorreoYContrasena(correo: String, contrasena: String): Usuario?
+
     @Query("DELETE FROM usuarios WHERE id = :usuarioId")
-    suspend fun eliminarUsuarioPorId(usuarioId: Int): Int
+    suspend fun eliminarUsuario(usuarioId: Int)
 
     @Update
     suspend fun actualizarUsuario(usuario: Usuario): Int

@@ -6,39 +6,90 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Nombre del Usuario -->
+    <!-- Información del Usuario: Nombre -->
     <TextView
         android:id="@+id/nombreTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre:"
+        android:text="Nombre: Juan Pérez"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Correo del Usuario -->
+    <!-- Información del Usuario: Correo -->
     <TextView
         android:id="@+id/correoTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Correo:"
-        android:textSize="18sp"
+        android:text="Correo: juan@example.com"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/nombreTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="8dp" />
 
-    <!-- Rol del Usuario -->
-    <TextView
-        android:id="@+id/rolTextView"
+    <!-- Separador -->
+    <View
+        android:id="@+id/separador"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Rol:"
-        android:textSize="18sp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
         app:layout_constraintTop_toBottomOf="@id/correoTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
+
+    <!-- Título de Compras -->
+    <TextView
+        android:id="@+id/tituloComprasTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Historial de Compras"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/separador"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- RecyclerView para Compras -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCompras"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tituloComprasTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editarPerfilButton" />
+
+    <!-- Botón Editar Perfil -->
+    <Button
+        android:id="@+id/editarPerfilButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Editar Perfil"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewCompras"
+        app:layout_constraintBottom_toTopOf="@id/cerrarSesionButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Botón Cerrar Sesión -->
+    <Button
+        android:id="@+id/cerrarSesionButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editarPerfilButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

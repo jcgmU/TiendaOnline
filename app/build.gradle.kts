@@ -1,3 +1,10 @@
+// build.gradle.kts
+
+// Declaración de variables al inicio
+val roomVersion = "2.6.1"
+val composeVersion = "1.5.1"
+val material3Version = "1.1.1"
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -12,20 +19,23 @@ android {
         applicationId = "com.jcgmu.tiendaonline"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2 // Incrementado para la nueva versión de la base de datos
+        versionCode = 3 // Incrementado para la nueva versión de la base de datos
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
         compose = true
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -44,7 +54,7 @@ android {
         jvmTarget = "1.8"
         languageVersion = "1.9"
         apiVersion = "1.9"
-        freeCompilerArgs = freeCompilerArgs + listOf(
+        freeCompilerArgs = listOf(
             "-Xjvm-default=all", // Habilita la compatibilidad con bytecode antiguo
             "-opt-in=kotlin.RequiresOptIn" // Habilita características experimentales si es necesario
         )
@@ -54,9 +64,9 @@ android {
         kotlinCompilerExtensionVersion = "1.5.1" // Ajusta según la versión de Compose
     }
 
-    packaging {
+    packagingOptions {
         resources {
-            excludes += listOf("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
 }
@@ -74,28 +84,29 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
     // RecyclerView
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
 
     // Gson
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation(libs.androidx.activity)
+    implementation("androidx.activity:activity-ktx:1.7.2") // Reemplazado
 
     // Room Database
-    val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
+    implementation(libs.androidx.activity)
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
+    // Glide para carga de imágenes
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+
     // Jetpack Compose
-    val composeVersion = "1.5.1"
-    val material3Version = "1.1.1"
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-graphics:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
     implementation("androidx.compose.material3:material3:$material3Version")
     implementation("androidx.activity:activity-compose:1.7.2")
-    implementation("androidx.activity:activity-ktx:1.7.2")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")

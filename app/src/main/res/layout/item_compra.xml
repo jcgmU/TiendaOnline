@@ -14,21 +14,31 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Nombre del Usuario -->
+        <!-- Fecha de la Compra -->
         <TextView
-            android:id="@+id/nombreTextView"
+            android:id="@+id/fechaCompraTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre del Usuario"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:text="Fecha: 01/01/2024"
+            android:textSize="14sp"
+            android:textColor="#666666" />
 
-        <!-- Correo del Usuario -->
+        <!-- Detalles del Producto -->
         <TextView
-            android:id="@+id/correoTextView"
+            android:id="@+id/productoCompraTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="correo@ejemplo.com"
+            android:text="Producto: Nombre del Producto"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp" />
+
+        <!-- Cantidad y Precio Total -->
+        <TextView
+            android:id="@+id/cantidadPrecioCompraTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad: 2 | Total: \$40.00"
             android:textSize="14sp"
             android:textColor="#666666"
             android:layout_marginTop="4dp" />
