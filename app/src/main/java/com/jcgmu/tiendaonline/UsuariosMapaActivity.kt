@@ -60,12 +60,18 @@ class UsuariosMapaActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 // Opcional: Centrar el mapa en la primera ubicación
                 val primerUsuario = usuarios.first()
-                if (primerUsuario.latitud != null && primerUsuario.longitud != null) {
-                    val primeraPosicion = LatLng(primerUsuario.latitud, primerUsuario.longitud)
+                val latitud = primerUsuario.latitud
+                val longitud = primerUsuario.longitud
+                if (latitud != null && longitud != null) {
+                    val primeraPosicion = LatLng(latitud, longitud)
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(primeraPosicion, 10f))
                 }
             } else {
-                Toast.makeText(this@UsuariosMapaActivity, "No hay usuarios con ubicación registrada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@UsuariosMapaActivity,
+                    "No hay usuarios con ubicación registrada",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

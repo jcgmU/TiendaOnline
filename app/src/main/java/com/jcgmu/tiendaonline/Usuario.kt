@@ -10,6 +10,6 @@ data class Usuario(
     var correo: String,
     val contrasena: String,
     val rol: String,
-    val latitud: Double?,
-    val longitud: Double?
+    var latitud: Double?,
+    var longitud: Double?
 )

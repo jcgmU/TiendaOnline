@@ -22,7 +22,7 @@
         <!-- Clave de API de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_GOOGLE_MAPS_API_KEY" />
+            android:value="AIzaSyDzVwzcls4dBO7ALPb8SGhOFWljVdC6UBw" />
 
         <!-- LoginActivity como Launcher -->
         <activity
@@ -37,44 +37,22 @@
         </activity>
 
         <!-- Otras Actividades -->
-        <activity
-            android:name=".EditarPerfilActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UsuariosMapaActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UsuarioInicioActivity"
-            android:exported="true" />
+        <activity android:name=".EditarPerfilActivity" android:exported="true" />
+        <activity android:name=".UsuariosMapaActivity" android:exported="true" />
+        <activity android:name=".UsuarioInicioActivity" android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.TiendaOnline" />
-        <activity
-            android:name=".RegistroActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ListadoProductosActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CarritoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".AdminPanelActivity"
-            android:exported="true" />
-        <activity
-            android:name=".GestionProductosActivity"
-            android:exported="true" />
-        <activity
-            android:name=".AgregarProductoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".EditarProductoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".GestionUsuariosActivity"
-            android:exported="true" />
+        <activity android:name=".RegistroActivity" android:exported="true" />
+        <activity android:name=".ListadoProductosActivity" android:exported="true" />
+        <activity android:name=".CarritoActivity" android:exported="true" />
+        <activity android:name=".AdminPanelActivity" android:exported="true" />
+        <activity android:name=".GestionProductosActivity" android:exported="true" />
+        <activity android:name=".AgregarProductoActivity" android:exported="true" />
+        <activity android:name=".EditarProductoActivity" android:exported="true" />
+        <activity android:name=".GestionUsuariosActivity" android:exported="true" />
         <activity
             android:name=".PerfilActivity"
             android:exported="true"

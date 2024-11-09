@@ -59,7 +59,9 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 }
 
                 if (usuario != null && usuario.latitud != null && usuario.longitud != null) {
-                    val posicion = LatLng(usuario.latitud, usuario.longitud)
+                    val latitud = usuario.latitud!!
+                    val longitud = usuario.longitud!!
+                    val posicion = LatLng(latitud, longitud)
                     map.addMarker(
                         MarkerOptions()
                             .position(posicion)
@@ -70,6 +72,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 } else {
                     Toast.makeText(requireContext(), "No se encontró la ubicación del usuario", Toast.LENGTH_SHORT).show()
                 }
+
             } else {
                 Toast.makeText(requireContext(), "Usuario no identificado", Toast.LENGTH_SHORT).show()
             }
