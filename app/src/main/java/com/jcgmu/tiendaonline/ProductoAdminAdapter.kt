@@ -1,6 +1,8 @@
+// ProductoAdminAdapter.kt
 package com.jcgmu.tiendaonline
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +10,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import android.net.Uri
 
 class ProductoAdminAdapter(
     private val context: Context,
@@ -41,7 +42,7 @@ class ProductoAdminAdapter(
         fun bind(producto: Producto) {
             nombreTextView.text = producto.nombre
             descripcionTextView.text = producto.descripcion
-            precioTextView.text = "$${String.format("%.2f", producto.precio)}"
+            precioTextView.text = "COP ${String.format("%.2f", producto.precio)}"
             imagenImageView.setImageURI(Uri.parse(producto.imagenUri))
 
             editarButton.setOnClickListener {

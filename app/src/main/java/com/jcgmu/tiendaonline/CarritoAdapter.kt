@@ -1,5 +1,7 @@
 package com.jcgmu.tiendaonline
+
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +9,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import android.net.Uri
-
 
 class CarritoAdapter(
     private val context: Context,
@@ -38,7 +38,7 @@ class CarritoAdapter(
 
         fun bind(producto: Producto) {
             nombreTextView.text = producto.nombre
-            precioTextView.text = "$${String.format("%.2f", producto.precio)}"
+            precioTextView.text = "COP ${String.format("%.2f", producto.precio)}"
             imagenImageView.setImageURI(Uri.parse(producto.imagenUri))
 
             eliminarButton.setOnClickListener {

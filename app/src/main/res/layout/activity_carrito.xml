@@ -1,6 +1,8 @@
+<!-- activity_carrito.xml -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/pagarButton"
+        app:layout_constraintBottom_toTopOf="@+id/totalTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -19,19 +21,82 @@
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total: $0.00"
-        app:layout_constraintBottom_toTopOf="@id/pagarButton"
+        android:text="Total: COP 0.00"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewCarrito"
+        app:layout_constraintBottom_toTopOf="@+id/card_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- EditText para el número de tarjeta -->
+    <EditText
+        android:id="@+id/card_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Número de Tarjeta"
+        app:layout_constraintTop_toBottomOf="@id/totalTextView"
+        app:layout_constraintBottom_toTopOf="@+id/cvc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp" />
 
-    <!-- Botón Pagar en la parte inferior -->
+    <!-- EditText para el CVC -->
+    <EditText
+        android:id="@+id/cvc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="CVC"
+        app:layout_constraintTop_toBottomOf="@id/card_number"
+        app:layout_constraintBottom_toTopOf="@+id/exp_year"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- EditText para el Año de Expiración -->
+    <EditText
+        android:id="@+id/exp_year"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Año de Expiración (YYYY)"
+        app:layout_constraintTop_toBottomOf="@id/cvc"
+        app:layout_constraintBottom_toTopOf="@+id/exp_month"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- EditText para el Mes de Expiración -->
+    <EditText
+        android:id="@+id/exp_month"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Mes de Expiración (MM)"
+        app:layout_constraintTop_toBottomOf="@id/exp_year"
+        app:layout_constraintBottom_toTopOf="@+id/pagarButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Botón Pagar con ePayco -->
     <Button
         android:id="@+id/pagarButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Pagar"
+        android:text="Pagar con ePayco"
         app:layout_constraintBottom_toTopOf="@+id/cerrarSesionButton"
+        app:layout_constraintTop_toBottomOf="@id/exp_month"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
@@ -47,6 +112,7 @@
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pagarButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"

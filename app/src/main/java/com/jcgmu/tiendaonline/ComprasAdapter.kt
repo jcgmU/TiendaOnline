@@ -30,7 +30,7 @@ class ComprasAdapter : RecyclerView.Adapter<ComprasAdapter.CompraViewHolder>() {
         val fecha = java.util.Date(compra.fecha) // Convertir Long a Date
         holder.fechaTextView.text = "Fecha: ${dateFormat.format(fecha)}"
         holder.productoTextView.text = "Producto: ${compra.productoNombre}"
-        holder.cantidadPrecioTextView.text = "Cantidad: ${compra.cantidad} | Total: \$${String.format("%.2f", compra.precioTotal)}"
+        holder.cantidadPrecioTextView.text = "Cantidad: ${compra.cantidad} | Total: COP ${String.format("%.2f", compra.precioTotal)}"
     }
 
     override fun getItemCount(): Int = compras.size

@@ -1,4 +1,4 @@
-// build.gradle.kts
+// app/build.gradle.kts
 
 // Declaración de variables al inicio
 val roomVersion = "2.6.1"
@@ -6,9 +6,10 @@ val composeVersion = "1.5.1"
 val material3Version = "1.1.1"
 
 plugins {
+
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt") // Necesario para Room
+    id("kotlin-kapt")
 }
 
 android {
@@ -19,7 +20,7 @@ android {
         applicationId = "com.jcgmu.tiendaonline"
         minSdk = 24
         targetSdk = 34
-        versionCode = 3 // Incrementado para la nueva versión de la base de datos
+        versionCode = 3
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -46,22 +47,22 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
         languageVersion = "1.9"
         apiVersion = "1.9"
         freeCompilerArgs = listOf(
-            "-Xjvm-default=all", // Habilita la compatibilidad con bytecode antiguo
-            "-opt-in=kotlin.RequiresOptIn" // Habilita características experimentales si es necesario
+            "-Xjvm-default=all",
+            "-opt-in=kotlin.RequiresOptIn"
         )
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1" // Ajusta según la versión de Compose
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 
     packagingOptions {
@@ -88,19 +89,14 @@ dependencies {
 
     // Gson
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("androidx.activity:activity-ktx:1.7.2") // Reemplazado
+    implementation("androidx.activity:activity-ktx:1.7.2")
 
     // Room Database
     implementation("androidx.room:room-runtime:$roomVersion")
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.fragment.ktx)
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
-    // Glide para carga de imágenes
+    // Glide
     implementation("com.github.bumptech.glide:glide:4.15.1")
     kapt("com.github.bumptech.glide:compiler:4.15.1")
 
@@ -113,12 +109,36 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.7.2")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // Google Maps
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
+
+    // ePayco SDK desde JitPack
+    implementation("com.github.epayco:epayco-android:v3.13.0") {
+        exclude(group = "com.android.support", module = "support-v4")
+        exclude(group = "com.android.support", module = "support-compat")
+        exclude(group = "com.android.support", module = "support-media-compat")
+        exclude(group = "com.android.support", module = "support-core-utils")
+        exclude(group = "com.android.support", module = "support-core-ui")
+        exclude(group = "com.android.support", module = "support-fragment")
+    }
+
+
+    // Forzar el uso de androidx
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
+
+
+    // Otras dependencias
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+
+
 
     // Testing dependencies
     testImplementation("junit:junit:4.13.2")
@@ -127,4 +147,5 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
+
 }
