@@ -33,7 +33,7 @@
         <!-- Clave de API de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDzVwzcls4dBO7ALPb8SGhOFWljVdC6UBw" />
+            android:value="KEY API GOOGLE MAPS" />
 
         <!-- Otras actividades -->
         <activity android:name=".CheckoutActivity" android:exported="true" />

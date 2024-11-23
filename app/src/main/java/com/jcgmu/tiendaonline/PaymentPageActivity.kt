@@ -85,8 +85,8 @@ class PaymentPageActivity : AppCompatActivity() {
         }
 
         val auth = Authentication().apply {
-            apiKey = "66e5c6208d972f144c7f93920d9b1445" // PUBLIC_KEY
-            privateKey = "c8111251444427b6a03231275f2702a2" // PRIVATE_KEY
+            apiKey = "PUBLIC API KEY" // PUBLIC_KEY
+            privateKey = "PRIVATE API KEY" // PRIVATE_KEY
             lang = "ES"
             test = true
         }
