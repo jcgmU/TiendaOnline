@@ -1,5 +1,28 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">TiendaOnline</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Fragmentos y elementos generales -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Texto para la pantalla del carrito -->
+    <string name="total">Total: COP 0.00</string>
+    <string name="ver_checkout">Ver Checkout</string>
+
+    <!-- Texto para los campos del formulario de tarjeta -->
+    <string name="numero_tarjeta">Número de Tarjeta</string>
+    <string name="cvc">CVC</string>
+    <string name="anio_expiracion">Año de Expiración (YYYY)</string>
+    <string name="mes_expiracion">Mes de Expiración (MM)</string>
+
+    <!-- Texto para los botones -->
+    <string name="pagar_epayco">Pagar con ePayco</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="pagar">Pagar</string>
+
+    <!-- Texto para la pantalla de pago -->
+    <string name="total_pagar">Total a pagar:</string>
+    <string name="tarjeta_credito_debito">Tarjeta de Crédito/Débito</string>
+    <string name="pse">PSE</string>
+    <string name="daviplata">Daviplata</string>
 </resources>

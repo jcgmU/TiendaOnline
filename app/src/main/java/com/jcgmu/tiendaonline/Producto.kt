@@ -9,5 +9,6 @@ data class Producto(
     val nombre: String,
     val descripcion: String,
     val precio: Double,
-    val imagenUri: String
+    val imagenUri: String,
+    var cantidad: Int = 1 // Propiedad para gestionar la cantidad en el carrito
 )

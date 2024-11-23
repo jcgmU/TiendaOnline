@@ -6,7 +6,6 @@ val composeVersion = "1.5.1"
 val material3Version = "1.1.1"
 
 plugins {
-
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
@@ -36,7 +35,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -53,8 +52,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
-        languageVersion = "1.9"
-        apiVersion = "1.9"
         freeCompilerArgs = listOf(
             "-Xjvm-default=all",
             "-opt-in=kotlin.RequiresOptIn"
@@ -66,9 +63,7 @@ android {
     }
 
     packagingOptions {
-        resources {
-            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
-        }
+        resources.excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
     }
 }
 
@@ -117,6 +112,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
 
     // ePayco SDK desde JitPack
+
     implementation("com.github.epayco:epayco-android:v3.13.0") {
         exclude(group = "com.android.support", module = "support-v4")
         exclude(group = "com.android.support", module = "support-compat")
@@ -126,19 +122,15 @@ dependencies {
         exclude(group = "com.android.support", module = "support-fragment")
     }
 
-
-    // Forzar el uso de androidx
+    // Legacy support
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-
-
-    // Otras dependencias
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    // Lifecycle Components
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
-
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
     // Testing dependencies
     testImplementation("junit:junit:4.13.2")
@@ -147,5 +139,4 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
-
 }

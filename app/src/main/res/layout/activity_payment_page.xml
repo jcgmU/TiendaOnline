@@ -1,0 +1,127 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/totalPagoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total a pagar:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <RadioGroup
+            android:id="@+id/metodoPagoGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/tarjetaRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tarjeta de Crédito/Débito" />
+
+            <RadioButton
+                android:id="@+id/pseRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PSE" />
+
+            <RadioButton
+                android:id="@+id/daviplataRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daviplata" />
+        </RadioGroup>
+
+        <!-- Layout para el formulario de tarjeta -->
+        <LinearLayout
+            android:id="@+id/tarjetaLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="16dp">
+
+            <!-- Número de tarjeta -->
+            <EditText
+                android:id="@+id/tarjetaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de tarjeta"
+                android:inputType="number" />
+
+            <!-- CVC -->
+            <EditText
+                android:id="@+id/cvcEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CVC"
+                android:inputType="numberPassword" />
+
+            <!-- Mes de expiración -->
+            <EditText
+                android:id="@+id/expMonthEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mes de expiración"
+                android:inputType="number" />
+
+            <!-- Año de expiración -->
+            <EditText
+                android:id="@+id/expYearEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Año de expiración"
+                android:inputType="number" />
+
+            <!-- Nombre -->
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
+
+            <!-- Apellido -->
+            <EditText
+                android:id="@+id/lastNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellido"
+                android:inputType="textPersonName" />
+
+            <!-- Correo electrónico -->
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress" />
+
+            <!-- Número de documento -->
+            <EditText
+                android:id="@+id/docNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de documento"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <!-- Botón para proceder al pago -->
+        <Button
+            android:id="@+id/pagarButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pagar"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>
