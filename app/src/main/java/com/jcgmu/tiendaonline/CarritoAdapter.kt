@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class CarritoAdapter(
     private val context: Context,
     private val productos: List<Producto>,
-    private val eliminarProductoCallback: (Producto) -> Unit
+    private val eliminarUnidadCallback: (Int) -> Unit
 ) : RecyclerView.Adapter<CarritoAdapter.CarritoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarritoViewHolder {
@@ -26,23 +26,21 @@ class CarritoAdapter(
         holder.bind(producto)
     }
 
-    override fun getItemCount(): Int {
-        return productos.size
-    }
+    override fun getItemCount(): Int = productos.size
 
     inner class CarritoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nombreTextView: TextView = itemView.findViewById(R.id.nombreProductoCarrito)
         private val precioTextView: TextView = itemView.findViewById(R.id.precioProductoCarrito)
-        private val imagenImageView: ImageView = itemView.findViewById(R.id.imagenProductoCarrito)
-        private val eliminarButton: Button = itemView.findViewById(R.id.eliminarCarritoButton)
+        private val cantidadTextView: TextView = itemView.findViewById(R.id.cantidadProductoCarrito)
+        private val eliminarButton: Button = itemView.findViewById(R.id.eliminarUnidadButton)
 
         fun bind(producto: Producto) {
             nombreTextView.text = producto.nombre
-            precioTextView.text = "COP ${String.format("%.2f", producto.precio)}"
-            imagenImageView.setImageURI(Uri.parse(producto.imagenUri))
+            precioTextView.text = "COP ${String.format("%.2f", producto.precio * producto.cantidad)}"
+            cantidadTextView.text = "Cantidad: ${producto.cantidad}"
 
             eliminarButton.setOnClickListener {
-                eliminarProductoCallback(producto)
+                eliminarUnidadCallback(producto.id)
             }
         }
     }

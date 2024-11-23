@@ -46,8 +46,9 @@ class CarritoActivity : AppCompatActivity() {
             return
         }
 
-        val adapter = ProductoAdapter(this, productos) { producto ->
-            Toast.makeText(this, "${producto.nombre} seleccionado", Toast.LENGTH_SHORT).show()
+        val adapter = CarritoAdapter(this, productos) { productoId ->
+            CarritoManager.eliminarUnidadProducto(this, productoId)
+            cargarProductos() // Recargar la lista y actualizar el total
         }
         recyclerView.adapter = adapter
 

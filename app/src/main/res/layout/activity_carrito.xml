@@ -1,11 +1,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- RecyclerView para los productos en el carrito -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCarrito"
         android:layout_width="0dp"
@@ -15,12 +13,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- TextView para el total del carrito -->
     <TextView
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/total"
+        android:text="Total: COP 0.00"
         app:layout_constraintTop_toBottomOf="@id/recyclerViewCarrito"
         app:layout_constraintBottom_toTopOf="@+id/checkoutButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,17 +25,13 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp" />
 
-    <!-- Botón para ir al checkout -->
     <Button
         android:id="@+id/checkoutButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/ver_checkout"
+        android:text="Ir al checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp" />
-
+        android:layout_margin="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
