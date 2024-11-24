@@ -13,23 +13,24 @@ Este proyecto es una aplicación de tienda en línea desarrollada en Android. La
 - Uso de Material Design para una interfaz moderna y funcional.
 
 ## Cambios Recientes
-### 18 de noviembre de 2024
-1. **Corrección de errores en el uso de ePayco:**
-   - Se corrigieron referencias a métodos inexistentes en la clase `Card` del SDK de ePayco.
-   - Se implementó el método `setHasCvv(true)` para la validación del código de seguridad (CVC).
+### 23 de noviembre de 2024
+1. **Flujo mejorado para el pago y registro de compras:**
+   - Se agregó funcionalidad para guardar automáticamente las transacciones exitosas en la base de datos después del pago.
+   - Se limpió el carrito de compras tras registrar las transacciones en la base de datos, asegurando consistencia en el flujo.
 
-2. **Validaciones y flujo de pago mejorado:**
-   - Se añadieron validaciones para los campos del formulario de pago, asegurando que los datos de la tarjeta sean completos antes de procesar el pago.
-   - Se manejaron excepciones para mostrar mensajes de error claros en caso de fallos durante la creación de tokens o cobros.
+2. **Corrección de errores en el historial de compras:**
+   - Se corrigió un problema donde las compras no aparecían en el historial debido a un error en la consulta de datos.
+   - Se añadieron logs en las actividades relacionadas para facilitar la depuración y detección de problemas.
 
-3. **Actualización de dependencias:**
-   - Se confirmó el uso de la versión `v3.13.0` del SDK de ePayco.
+3. **Manejo de errores mejorado:**
+   - Se implementó una validación para identificar si el usuario está autenticado antes de registrar las compras.
+   - Se mejoraron los mensajes de alerta en caso de fallos durante el registro de compras o consultas.
 
-4. **Documentación del uso de claves:**
-   - Se incluyó una advertencia para que los usuarios configuren sus propias claves de API (`API_KEY` y `PRIVATE_KEY`) en el archivo de configuración.
+4. **Mejoras de interfaz:**
+   - Ajustes en la visualización de productos en el historial de compras, mostrando el nombre del producto, cantidad y precio total en un diseño más claro y conciso.
 
-5. **Mejoras en el flujo del carrito de compras:**
-   - Al eliminar todos los productos del carrito, la aplicación regresa automáticamente al listado de productos.
+### Cambios anteriores
+- **18 de noviembre de 2024:** Mejoras en el flujo de pago, validaciones y corrección de errores en la integración con ePayco.
 
 ## Requisitos previos
 - Android Studio instalado en su sistema.
@@ -58,7 +59,7 @@ git clone https://github.com/jcgmU/TiendaOnline.git
 ```
 
 ### Configurar Claves de ePayco
-1. En el archivo `CarritoActivity.kt`, configure las claves públicas y privadas propias en el bloque de autenticación:
+1. En el archivo `PaymentPageActivity.kt`, configure las claves públicas y privadas propias en el bloque de autenticación:
 ```kotlin
 val auth = Authentication().apply {
     apiKey = "YOUR_PUBLIC_API_KEY"
@@ -90,3 +91,30 @@ Este proyecto está bajo la Licencia de este repositorio individual.
 
 ## Contacto
 Si tiene preguntas o necesita soporte adicional, puede contactarme en juancamilogarcia@ucompensar.edu.co o crear un issue en el repositorio.
+
+### Generar el APK y probar la app en un teléfono Android
+1. **Configurar el entorno de compilación:**
+   - Asegúrese de que Android Studio esté correctamente configurado con el SDK y las herramientas de compilación necesarias.
+   - Conecte su cuenta de desarrollador de Google si planea distribuir la aplicación.
+
+2. **Generar el APK:**
+   - En Android Studio, vaya a `Build > Build Bundle(s) / APK(s) > Build APK(s)`.
+   - Espere a que Android Studio compile el APK. Una vez finalizado, aparecerá una notificación con la ruta donde se generó el archivo APK.
+
+3. **Ubicar el APK generado:**
+   - Normalmente, el archivo APK se encuentra en la carpeta `app/build/outputs/apk/release/` o `app/build/outputs/apk/debug/` dependiendo de la configuración de compilación que eligió.
+
+4. **Habilitar la instalación desde orígenes desconocidos:**
+   - En su dispositivo Android, vaya a `Configuración > Seguridad > Fuentes desconocidas` y habilite la opción para permitir la instalación de aplicaciones desde fuera de la Play Store.
+
+5. **Transferir el APK al dispositivo:**
+   - Conecte su teléfono a su computadora mediante un cable USB.
+   - Copie el archivo APK a una ubicación accesible en su dispositivo, como la carpeta `Descargas`.
+
+6. **Instalar la aplicación:**
+   - Use un explorador de archivos en su dispositivo para localizar el archivo APK.
+   - Tóquelo para iniciar la instalación y siga las instrucciones en pantalla.
+
+7. **Probar la aplicación:**
+   - Una vez instalada, abra la aplicación desde el menú de aplicaciones.
+   - Inicie sesión con las credenciales de prueba y verifique que todas las funcionalidades funcionen correctamente.
